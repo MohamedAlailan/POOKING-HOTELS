@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وجهات السفر - Phoenix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style/destinations.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <img src="/PHOTO&VID/logo.png" alt="شعار Phoenix">
+                <span>Phoenix</span>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="home.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="destinations1.html" class="active"><i class="fas fa-map-marked-alt"></i> وجهات السفر</a></li>
+                    <li><a href="hotels.html"><i class="fas fa-hotel"></i> الفنادق</a></li>
+                    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> خدمات إضافية</a></li>
+                </ul>
+            </nav>
+            
+            <div class="user-menu">
+                <div class="user-avatar">
+                    <img src="/PHOTO&VID/" alt="صورة المستخدم">
+                </div>
+                <div class="user-dropdown">
+                    <div class="user-info">
+                        <span class="user-name">مرحباً، أحمد</span>
+                        <span class="user-role">عضو مميز</span>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="user.html"><i class="fas fa-user"></i> الملف الشخصي</a>
+                        <a href="my-booking.html"><i class="fas fa-calendar-alt"></i> حجوزاتي</a>
+                        <a href="index.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="destinations-main">
+        <section class="destinations-hero">
+            <div class="container">
+                <h1>اكتشف أفضل وجهات السفر حول العالم</h1>
+                <p>اختر وجهتك القادمة واستمتع بتجربة سفر لا تنسى</p>
+            </div>
+        </section>
+        
+        <section class="destinations-filter">
+            <div class="container">
+                <div class="filter-box">
+                    <div class="filter-group">
+                        <label for="continent"><i class="fas fa-globe-asia"></i> القارة</label>
+                        <select id="continent">
+                            <option value="all">جميع القارات</option>
+                            <option value="asia">آسيا</option>
+                            <option value="europe">أوروبا</option>
+                            <option value="africa">أفريقيا</option>
+                            <option value="north-america">أمريكا الشمالية</option>
+                            <option value="south-america">أمريكا الجنوبية</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="season"><i class="fas fa-sun"></i> الموسم</label>
+                        <select id="season">
+                            <option value="all">جميع المواسم</option>
+                            <option value="summer">الصيف</option>
+                            <option value="winter">الشتاء</option>
+                            <option value="spring">الربيع</option>
+                            <option value="autumn">الخريف</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="budget"><i class="fas fa-wallet"></i> الميزانية</label>
+                        <select id="budget">
+                            <option value="all">جميع الميزانيات</option>
+                            <option value="low">اقتصادية</option>
+                            <option value="medium">متوسطة</option>
+                            <option value="high">فاخرة</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn btn-primary">
+                        <i class="fas fa-filter"></i> تصفية النتائج
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="destinations-grid-section">
+            <div class="container">
+                <div class="destinations-grid">
+                    <!--الوجهات -->
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="/PHOTO&VID/dubai.jpg" alt="دبي">
+                            <div class="destination-badge">الأكثر زيارة</div>
+                        </div>
+                        <div class="destination-info">
+                            <h3>دبي، الإمارات</h3>
+                            <p class="destination-description">
+                                مدينة الأحلام والعمارة الحديثة، تجمع بين التراث العربي والأجواء العالمية الفاخرة.
+                            </p>
+                            <div class="destination-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>أفضل وقت: أكتوبر - أبريل</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-plane"></i>
+                                    <span>6 ساعات من الرياض</span>
+                                </div>
+                            </div>
+                            <div class="destination-footer">
+                                <a href="dubai.html" class="btn btn-small">استكشف المزيد</a>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="/PHOTO&VID/damas.jpg" alt="دمشق">
+                            <div class="destination-badge">تاريخية</div>
+                        </div>
+                        <div class="destination-info">
+                            <h3>دمشق, سوريا</h3>
+                            <p class="destination-description">
+                                قلب العروبة النابض وعاصمة الثقافة العربية, حيث الجامع الأموي و واختلاط الحضارات بعدد من الأماكن السياحية المثيرة
+                            </p>
+                            <div class="destination-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>أفضل وقت: مايو - سبتمبر</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-plane"></i>
+                                    <span>5 ساعات من دبي</span>
+                                </div>
+                            </div>
+                            <div class="destination-footer">
+                                <a href="paris.html" class="btn btn-small">استكشف المزيد</a>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="/PHOTO&VID/bali.webp" alt="بالى">
+                            <div class="destination-badge">شاطئية</div>
+                        </div>
+                        <div class="destination-info">
+                            <h3>بالى، إندونيسيا</h3>
+                            <p class="destination-description">
+                                جزيرة الآلهة، حيث الشواطئ الذهبية والطبيعة الخلابة والمعابد القديمة الساحرة.
+                            </p>
+                            <div class="destination-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>أفضل وقت: أبريل - أكتوبر</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-plane"></i>
+                                    <span>9 ساعات من الرياض</span>
+                                </div>
+                            </div>
+                            <div class="destination-footer">
+                                <a href="bali.html" class="btn btn-small">استكشف المزيد</a>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- وجهة 4 -->
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="/PHOTO&VID/istanbul.jpg" alt="إسطنبول">
+                            <div class="destination-badge">تاريخية</div>
+                        </div>
+                        <div class="destination-info">
+                            <h3>إسطنبول، تركيا</h3>
+                            <p class="destination-description">
+                                حيث يلتقي الشرق بالغرب، مدينة الجسور والمساجد العثمانية والأسواق الشعبية النابضة بالحياة.
+                            </p>
+                            <div class="destination-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>أفضل وقت: مارس - مايو</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-plane"></i>
+                                    <span>3 ساعات من الرياض</span>
+                                </div>
+                            </div>
+                            <div class="destination-footer">
+                                <a href="istanbul.html" class="btn btn-small">استكشف المزيد</a>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- وجهة 5 -->
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="/PHOTO&VID/maldiv.jpg" alt="المالديف">
+                            <div class="destination-badge">شاطئية</div>
+                        </div>
+                        <div class="destination-info">
+                            <h3>المالديف</h3>
+                            <p class="destination-description">
+                                جنة المحيط الهندي، حيث المياه الفيروزية والمنتجقات الفاخرة فوق الماء والاسترخاء المطلق.
+                            </p>
+                            <div class="destination-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>أفضل وقت: نوفمبر - أبريل</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-plane"></i>
+                                    <span>4.5 ساعات من دبي</span>
+                                </div>
+                            </div>
+                            <div class="destination-footer">
+                                <a href="maldives.html" class="btn btn-small">استكشف المزيد</a>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- وجهة 6 -->
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="/PHOTO&VID/Tokyo.jpg" alt="طوكيو">
+                            <div class="destination-badge">ثقافية</div>
+                        </div>
+                        <div class="destination-info">
+                            <h3>طوكيو، اليابان</h3>
+                            <p class="destination-description">
+                                حيث التقليد يلتقي الحداثة، مدينة الأنيمي والتكنولوجيا المتطورة والمعابد القديمة.
+                            </p>
+                            <div class="destination-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>أفضل وقت: مارس - مايو</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-plane"></i>
+                                    <span>10 ساعات من الرياض</span>
+                                </div>
+                            </div>
+                            <div class="destination-footer">
+                                <a href="tokyo.html" class="btn btn-small">استكشف المزيد</a>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pagination">
+                    <a href="#"><i class="fas fa-chevron-left"></i></a>
+                    <a href="#" class="active">1</a>
+                    <a href="destinations2.html">2</a>
+                    <a href="destinations2.html"><i class="fas fa-chevron-left"></i></a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="destinations-cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>لا تجد وجهتك المفضلة؟</h2>
+                    <p>يسعدنا مساعدتك في العثور على الوجهة المثالية لرحلتك القادمة</p>
+                    <a href="#" class="btn btn-large">اتصل بفريقنا</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Phoenix</h3>
+                    <p>نقدم أفضل خدمات السفر والفنادق حول العالم لعملائنا الكرام.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="home.html">الرئيسية</a></li>
+                        <li><a href="destinations1.html">وجهات السفر</a></li>
+                        <li><a href="hotels.html">الفنادق</a></li>
+                        <li><a href="services.html">الخدمات الإضافية</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>خدمة العملاء</h3>
+                    <ul>
+                        <li><a href="#">Phoenix@gmail.com</a></li>
+
+                </div>
+                
+                <div class="footer-col">
+                    <h3>النشرة البريدية</h3>
+                    <p>اشترك لتصلك آخر العروض والتخفيضات</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="بريدك الإلكتروني" required>
+                        <button type="submit" class="btn">اشترك</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Phoenix للسياحة والسفر. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/JS/destinations.js"></script>
+</body>
+</html>

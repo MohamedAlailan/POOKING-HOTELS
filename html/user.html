@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملف الشخصي - Phoenix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style/common.css">
+    <link rel="stylesheet" href="/style/user.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <img src="/PHOTO&VID/logo.png" alt="شعار Phoenix">
+                <span>Phoenix</span>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="destinations1.html"><i class="fas fa-map-marked-alt"></i> وجهات السفر</a></li>
+                    <li><a href="hotels.html"><i class="fas fa-hotel"></i> الفنادق</a></li>
+                    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> خدمات إضافية</a></li>
+                </ul>
+            </nav>
+            
+            <div class="user-menu">
+                <div class="user-avatar">
+                    <img src="/PHOTO&VID/" alt="صورة المستخدم">
+                </div>
+                <div class="user-dropdown">
+                    <div class="user-info">
+                        <span class="user-name">مرحباً، أحمد</span>
+                        <span class="user-role">عضو مميز</span>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="user.html" class="active"><i class="fas fa-user"></i> الملف الشخصي</a>
+                        <a href="my-booking.html"><i class="fas fa-calendar-alt"></i> حجوزاتي</a>
+                        <a href="index.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content profile-page">
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <img src="/PHOTO&VID/" alt="صورة المستخدم">
+                    <button class="btn btn-small change-avatar"><i class="fas fa-camera"></i> تغيير الصورة</button>
+                </div>
+                <div class="profile-info">
+                    <h1>أحمد محمد</h1>
+                    <p class="member-since"><i class="fas fa-calendar-alt"></i> عضو منذ: يناير 2022</p>
+                    <div class="badges">
+                        <span class="badge premium"><i class="fas fa-crown"></i> عضو مميز</span>
+                        <span class="badge traveler"><i class="fas fa-passport"></i> مسافر دائم</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-sections">
+                <!-- المعلومات الأساسية -->
+                <section class="profile-section">
+                    <h2><i class="fas fa-user-circle"></i> المعلومات الشخصية</h2>
+                    <div class="profile-details">
+                        <div class="detail-item">
+                            <span class="detail-label">البريد الإلكتروني:</span>
+                            <span class="detail-value">ahmed@example.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">رقم الهاتف:</span>
+                            <span class="detail-value">+963 123 456 789</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">تاريخ الميلاد:</span>
+                            <span class="detail-value">15 مارس 1990</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">الجنسية:</span>
+                            <span class="detail-value">سوري</span>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- التفضيلات -->
+                <section class="profile-section">
+                    <h2><i class="fas fa-heart"></i> تفضيلات السفر</h2>
+                    <div class="preferences">
+                        <div class="preference-item">
+                            <i class="fas fa-bed"></i>
+                            <span>نوع الغرفة المفضل: <strong>سويت</strong></span>
+                        </div>
+                        <div class="preference-item">
+                            <i class="fas fa-utensils"></i>
+                            <span>نظام الطعام: <strong>فطور فقط</strong></span>
+                        </div>
+                        <div class="preference-item">
+                            <i class="fas fa-plane"></i>
+                            <span>مقعد الطائرة: <strong>نافذة</strong></span>
+                        </div>
+                        <div class="preference-item">
+                            <i class="fas fa-smoking-ban"></i>
+                            <span>غرفة <strong>غير مدخنين</strong></span>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- الإحصائيات -->
+                <section class="profile-section">
+                    <h2><i class="fas fa-chart-bar"></i> إحصائيات السفر</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-globe-asia"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">7</span>
+                                <span class="stat-label">دول زارها</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-hotel"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">24</span>
+                                <span class="stat-label">ليلة حجز</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-plane"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">12</span>
+                                <span class="stat-label">رحلة طيران</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">35</span>
+                                <span class="stat-label">نقطة مكافآت</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Phoenix</h3>
+                    <p>نقدم أفضل خدمات السفر والفنادق حول العالم لعملائنا الكرام.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="home.html">الرئيسية</a></li>
+                        <li><a href="destinations1.html">وجهات السفر</a></li>
+                        <li><a href="hotels.html">الفنادق</a></li>
+                        <li><a href="services.html">الخدمات الإضافية</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>خدمة العملاء</h3>
+                    <ul>
+                        <li><a href="#">Phoenix@gmail.com</a></li>
+
+                </div>
+                
+                <div class="footer-col">
+                    <h3>النشرة البريدية</h3>
+                    <p>اشترك لتصلك آخر العروض والتخفيضات</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="بريدك الإلكتروني" required>
+                        <button type="submit" class="btn">اشترك</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Phoenix للسياحة والسفر. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/JS/user.js"></script>
+</body>
+</html>

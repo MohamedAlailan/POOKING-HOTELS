@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phoenix - شركة سياحية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset وأساسيات */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: 'Tajawal', Arial, sans-serif;
+}
+
+/* صفحة الترحيب */
+.D0 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #2c3e50, #3498db, #2ecc71);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+    z-index: 1000;
+}
+
+.D1{
+    text-align: center;
+    color: white;
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    position: relative;
+}
+
+/* الشعار */
+.D2 {
+    position: relative;
+    margin: 0 auto 30px;
+    width: 180px;
+    height: 180px;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+    border-radius: 50%;
+    animation: logoFloat 4s ease-in-out infinite;
+}
+
+.logo-shadow {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 20px;
+    background: radial-gradient(ellipse at center, 
+                              rgba(0,0,0,0.5) 0%, 
+                              rgba(0,0,0,0) 80%);
+    border-radius: 50%;
+    filter: blur(5px);
+    animation: shadowPulse 4s ease-in-out infinite;
+}
+
+.title {
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title-part {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: titleReveal 0.8s forwards;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.title-part:nth-child(1) {
+    animation-delay: 0.5s;
+    color: #fff;
+}
+
+.title-part:nth-child(2) {
+    animation-delay: 1s;
+    color: #f1c40f;
+}
+
+.title-part:nth-child(3) {
+    animation-delay: 1.5s;
+    color: #2ecc71;
+}
+
+/* شريط التقدم */
+.D3 {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 30px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #f1c40f, #e67e22);
+    border-radius: 5px;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+}
+
+.loading-text {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    animation: textPulse 2s infinite;
+}
+
+/* تذييل الصفحة */
+.footer {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Animations */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes shadowPulse {
+    0%, 100% { 
+        width: 80%;
+        opacity: 0.6;
+    }
+    50% { 
+        width: 60%;
+        opacity: 0.9;
+    }
+}
+
+@keyframes titleReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes textPulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .logo-container {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .splash-title {
+        font-size: 2rem;
+    }
+    
+    .loading-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-container {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .splash-title {
+        font-size: 1.8rem;
+    }
+}
+    </style>
+    <link rel="icon" href="/PHOTO&VID/logo.png" type="image/png">
+</head>
+<body>
+    <!-- صفحة الترحيب -->
+    <div class="D0">
+        <div class="D1">
+            <div class="D2">
+                <img src="/PHOTO&VID/logo.png" alt="شعار Phoenix" class="logo">
+                <div class="logo-shadow"></div>
+            </div>
+            <h1 class="title">
+                <span class="title-part">Phoenix</span>
+                <span class="title-part">للسياحة</span>
+                <span class="title-part">والسفر</span>
+            </h1>
+            <div class="D3">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="loading-text">جاري التحميل...</div>
+            </div>
+            <div class="footer">
+                <p>© 2023 Phoenix للسياحة. جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </div>
+
+    <script >
+        document.addEventListener('DOMContentLoaded', function() {
+    const splashScreen = document.querySelector('.D0');
+    const progressFill = document.querySelector('.progress-fill');
+    const titleParts = document.querySelectorAll('.title-part');
+    const loadingText = document.querySelector('.loading-text');
+    
+    // تأخير بدء التحريك حتى يتم تحميل الصفحة
+    setTimeout(initAnimations, 300);
+    
+    function initAnimations() {
+        // تحريك شريط التقدم
+        let progress = 0;
+        const duration = 6000; // 6 ثواني
+        const interval = 30; // تحديث كل 30ms
+        const increment = (interval / duration) * 100;
+        
+        const progressInterval = setInterval(() => {
+            progress += increment;
+            progressFill.style.width = `${Math.min(progress, 100)}%`;
+            
+            // تغيير نص التحميل بناء على التقدم
+            updateLoadingText(progress);
+            
+            if (progress >= 100) {
+                clearInterval(progressInterval);
+                // الانتقال بعد اكتمال الشريط
+                setTimeout(() => {
+                    splashScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        window.location.href = "/html/login_user.html";
+                    }, 500);
+                }, 300);
+            }
+        }, interval);
+        
+        // تأثيرات إضافية للعنوان
+        titleParts.forEach((part, index) => {
+            setTimeout(() => {
+                part.style.animationPlayState = 'running';
+            }, index * 500 + 500);
+        });
+    }
+    
+    function updateLoadingText(progress) {
+        const messages = [
+            { percent: 0, text: "جاري تهيئة النظام..." },
+            { percent: 20, text: "جاري تحميل البيانات..." },
+            { percent: 50, text: "جاري معالجة المحتوى..." },
+            { percent: 80, text: "جاري إكمال الإعدادات..." },
+            { percent: 95, text: "جاري التحويل..." }
+        ];
+        
+        const currentMessage = messages.reduce((prev, curr) => 
+            progress >= curr.percent ? curr : prev
+        );
+        
+        loadingText.textContent = currentMessage.text;
+        
+        // تأثيرات نصية إضافية
+        if (progress > 90) {
+            loadingText.style.color = `hsl(${120 + (progress - 90) * 12}, 100%, 70%)`;
+            loadingText.style.textShadow = `0 0 ${(progress - 90) * 2}px rgba(255, 255, 255, 0.7)`;
+        }
+    }
+    //ahhhaaa
+    // تأثيرات عند تحريك الماوس
+    splashScreen.addEventListener('mousemove', (e) => {
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+        
+        splashScreen.style.backgroundPosition = `
+            ${x * 20}% ${y * 20}%
+        `;
+    });
+});
+    </script>
+</body>
+</html>

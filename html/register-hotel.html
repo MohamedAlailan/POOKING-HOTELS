@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل فندق جديد - Phoenix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* المتغيرات العامة */
+        :root {
+            --primary-color: #e67e22;
+            --primary-hover: #d35400;
+            --secondary-color: #3498db;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --white: #ffffff;
+            --gray: #95a5a6;
+            --light-gray: #f5f5f5;
+            --border-radius: 8px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* زر عام */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: var(--border-radius);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 16px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #2980b9;
+        }
+
+        /* صفحة تسجيل الفندق */
+        .hotel-register-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 50px 0;
+        }
+
+        .hotel-register-container {
+            display: flex;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+
+        .hotel-register-image {
+            flex: 1;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('/PHOTO&VID/hotel-register-bg.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            color: white;
+        }
+
+        .hotel-register-image h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .hotel-register-image p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hotel-benefits {
+            margin-top: 30px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .benefit-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .hotel-register-form-container {
+            flex: 1;
+            padding: 50px;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-header h1 {
+            font-size: 2rem;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: var(--gray);
+        }
+
+        .hotel-register-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .hotel-register-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .hotel-register-form input,
+        .hotel-register-form select,
+        .hotel-register-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .hotel-register-form input:focus,
+        .hotel-register-form select:focus,
+        .hotel-register-form textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.2);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .stars-rating {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .star {
+            font-size: 24px;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .star.active {
+            color: #ffc107;
+        }
+
+        .amenities-checkboxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .amenity-item input {
+            width: auto;
+        }
+
+        .terms-agreement {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .terms-agreement input {
+            width: auto;
+        }
+
+        .terms-agreement label {
+            margin-bottom: 0;
+            font-size: 14px;
+        }
+
+        .terms-agreement a {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-footer p {
+            color: var(--gray);
+            margin-top: 15px;
+        }
+
+        .form-footer a {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        /* التجاوب */
+        @media (max-width: 992px) {
+            .hotel-register-container {
+                flex-direction: column;
+            }
+            
+            .hotel-register-image {
+                padding: 30px;
+                text-align: center;
+            }
+            
+            .hotel-register-form-container {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .form-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hotel-register-image h2 {
+                font-size: 1.5rem;
+            }
+            
+            .form-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .amenities-checkboxes {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- قسم تسجيل الفندق -->
+    <section class="hotel-register-section">
+        <div class="container">
+            <div class="hotel-register-container">
+                <!-- قسم الصورة والمميزات -->
+                <div class="hotel-register-image">
+                    <h2>انضم إلى منصة Phoenix للفنادق</h2>
+                    <p>سجل فندقك الآن وتمتع بوصول إلى آلاف المسافرين حول العالم</p>
+                    
+                    <div class="hotel-benefits">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <h4>وصول إلى آلاف الزبائن</h4>
+                                <p>عرض فندقك على آلاف المسافرين الباحثين عن إقامة مميزة</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h4>أدوات إدارة متكاملة</h4>
+                                <p>لوحة تحكم متكاملة لإدارة الحجوزات والغرف والعروض</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div>
+                                <h4>عمولات تنافسية</h4>
+                                <p>عمولات منخفضة تبدأ من 10% فقط على كل حجز</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- نموذج تسجيل الفندق -->
+                <div class="hotel-register-form-container">
+                    <div class="form-header">
+                        <h1><i class="fas fa-hotel"></i> تسجيل فندق جديد</h1>
+                        <p>املأ النموذج أدناه لتسجيل فندقك في منصتنا</p>
+                    </div>
+                    
+                    <form class="hotel-register-form" id="hotelRegisterForm">
+                        <div class="form-group">
+                            <label for="hotelName">اسم الفندق *</label>
+                            <input type="text" id="hotelName" name="hotelName" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="country">البلد *</label>
+                                <select id="country" name="country" required>
+                                    <option value="">اختر البلد</option>
+                                    <option value="SA">المملكة العربية السعودية</option>
+                                    <option value="AE">الإمارات العربية المتحدة</option>
+                                    <option value="EG">مصر</option>
+                                    <option value="QA">قطر</option>
+                                    <option value="KW">الكويت</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">المدينة *</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">العنوان التفصيلي *</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>تصنيف الفندق (النجوم) *</label>
+                            <div class="stars-rating" id="starsRating">
+                                <span class="star" data-value="1"><i class="fas fa-star"></i></span>
+                                <span class="star" data-value="2"><i class="fas fa-star"></i></span>
+                                <span class="star" data-value="3"><i class="fas fa-star"></i></span>
+                                <span class="star" data-value="4"><i class="fas fa-star"></i></span>
+                                <span class="star" data-value="5"><i class="fas fa-star"></i></span>
+                            </div>
+                            <input type="hidden" id="hotelRating" name="hotelRating" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>مرافق الفندق</label>
+                            <div class="amenities-checkboxes">
+                                <div class="amenity-item">
+                                    <input type="checkbox" id="wifi" name="amenities" value="wifi">
+                                    <label for="wifi">واي فاي مجاني</label>
+                                </div>
+                                <div class="amenity-item">
+                                    <input type="checkbox" id="pool" name="amenities" value="pool">
+                                    <label for="pool">مسبح</label>
+                                </div>
+                                <div class="amenity-item">
+                                    <input type="checkbox" id="gym" name="amenities" value="gym">
+                                    <label for="gym">صالة رياضية</label>
+                                </div>
+                                <div class="amenity-item">
+                                    <input type="checkbox" id="spa" name="amenities" value="spa">
+                                    <label for="spa">سبا</label>
+                                </div>
+                                <div class="amenity-item">
+                                    <input type="checkbox" id="restaurant" name="amenities" value="restaurant">
+                                    <label for="restaurant">مطعم</label>
+                                </div>
+                                <div class="amenity-item">
+                                    <input type="checkbox" id="parking" name="amenities" value="parking">
+                                    <label for="parking">موقف سيارات</label>
+                                </div>
+                                <div class="amenity-item">
+                                    <input type="checkbox" id="breakfast" name="amenities" value="breakfast">
+                                    <label for="breakfast">إفطار مجاني</label>
+                                </div>
+                                <div class="amenity-item">
+                                    <input type="checkbox" id="airport" name="amenities" value="airport">
+                                    <label for="airport">نقل من المطار</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="hotelDescription">وصف الفندق *</label>
+                            <textarea id="hotelDescription" name="hotelDescription" rows="4" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="managerName">اسم المدير المسؤول *</label>
+                            <input type="text" id="managerName" name="managerName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="managerEmail">البريد الإلكتروني *</label>
+                            <input type="email" id="managerEmail" name="managerEmail" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="managerPhone">رقم الجوال *</label>
+                            <input type="tel" id="managerPhone" name="managerPhone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">كلمة المرور *</label>
+                            <input type="password" id="password" name="password" minlength="8" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword">تأكيد كلمة المرور *</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+                        
+                        <div class="terms-agreement">
+                            <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                            <label for="agreeTerms">أوافق على <a href="#">شروط الاستخدام</a> و <a href="privacy.html">سياسة الخصوصية</a> للمنصة</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-hotel"></i> تسجيل الفندق
+                        </button>
+                        
+                        <div class="form-footer">
+                            <p>لديك حساب بالفعل؟ <a href="login_hotel.html">تسجيل الدخول لإدارة الفنادق</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hotelRegisterForm = document.getElementById('hotelRegisterForm');
+            const stars = document.querySelectorAll('.star');
+            const hotelRatingInput = document.getElementById('hotelRating');
+            
+            // نظام تقييم النجوم
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const value = parseInt(this.getAttribute('data-value'));
+                    
+                    // تحديث عرض النجوم
+                    stars.forEach((s, index) => {
+                        if (index < value) {
+                            s.classList.add('active');
+                        } else {
+                            s.classList.remove('active');
+                        }
+                    });
+                    
+                    // تحديث قيمة التقييم في الحقل المخفي
+                    hotelRatingInput.value = value;
+                });
+            });
+            
+            hotelRegisterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // التحقق من صحة البيانات
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                if (password !== confirmPassword) {
+                    alert('كلمة المرور وتأكيدها غير متطابقين');
+                    return;
+                }
+                
+                if (!hotelRatingInput.value) {
+                    alert('الرجاء تحديد تصنيف الفندق (النجوم)');
+                    return;
+                }
+                
+                // هنا يمكنك إضافة كود إرسال البيانات إلى الخادم
+                const formData = new FormData(hotelRegisterForm);
+                const hotelData = Object.fromEntries(formData.entries());
+                
+                console.log('بيانات الفندق المسجلة:', hotelData);
+                
+                alert('تم تسجيل الفندق بنجاح! سيتم مراجعة البيانات والاتصال بك خلال 48 ساعة');
+                
+                // إعادة توجيه إلى صفحة الدخول بعد 3 ثواني
+                setTimeout(() => {
+                    window.location.href = '/html/index.html';
+                }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>

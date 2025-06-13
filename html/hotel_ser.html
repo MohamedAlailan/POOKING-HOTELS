@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الخدمات - Phoenix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #e67e22;
+            --secondary-color: #d35400;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --white: #ffffff;
+            --gray: #95a5a6;
+            --light-gray: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-large {
+            padding: 12px 30px;
+            font-size: 18px;
+        }
+
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .section-title {
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--primary-color);
+        }
+
+        /* الهيدر */
+        .main-header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: 60px;
+            border-radius:50% ;
+        }
+
+        /* لوحة التحكم */
+        .dashboard {
+            display: flex;
+            min-height: calc(100vh - 80px);
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: var(--dark-color);
+            color: white;
+            padding: 20px 0;
+            transition: all 0.3s;
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .sidebar-header h3 {
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-header h3 i {
+            color: var(--primary-color);
+        }
+
+        .sidebar-menu {
+            padding: 0 10px;
+        }
+
+        .menu-item {
+            margin-bottom: 5px;
+        }
+
+        .menu-item a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .menu-item a:hover, .menu-item a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .menu-item a i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background-color: var(--light-gray);
+        }
+
+        /* فلتر الخدمات */
+        .service-filter {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .filter-group {
+            flex: 1;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .filter-control {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .filter-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        /* بطاقات الخدمات */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .service-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .service-content {
+            padding: 20px;
+            position: relative;
+        }
+
+        .service-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .service-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .service-description {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .service-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .service-category {
+            display: inline-block;
+            padding: 3px 8px;
+            background-color: var(--light-color);
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .service-availability {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .available {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .unavailable {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .service-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* جدول الخدمات */
+        .services-table {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .table-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .table-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .table-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: right;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        th {
+            background-color: var(--light-color);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: rgba(230, 126, 34, 0.05);
+        }
+
+        .table-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+
+        /* نموذج إضافة/تعديل خدمة */
+        .service-form-container {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 30px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.2);
+            outline: none;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .image-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .image-preview {
+            width: 200px;
+            height: 150px;
+            border-radius: 5px;
+            object-fit: cover;
+            border: 2px dashed var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* الفوتر */
+        .main-footer {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                padding: 10px 0;
+            }
+            
+            .sidebar-menu {
+                display: flex;
+                overflow-x: auto;
+                padding: 0 10px;
+            }
+            
+            .menu-item {
+                min-width: max-content;
+            }
+            
+            .filter-row, .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <img src="/PHOTO&VID/logo.png" alt="شعار Phoenix">
+                <span>Phoenix</span>
+            </div>
+            
+            <div class="user-menu">
+                <div class="user-avatar">
+                    <img src="/PHOTO&VID/" alt="صورة المستخدم">
+                </div>
+                <div class="user-dropdown">
+                    <div class="user-info">
+                        <span class="user-name">مرحباً، أحمد</span>
+                        <span class="user-role">مدير الفندق</span>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="ad-hotel.html"><i class="fas fa-user"></i> الملف الشخصي</a>
+                        <a href="index.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-hotel"></i> إدارة الفندق</h3>
+            </div>
+            <nav class="sidebar-menu">
+                <div class="menu-item">
+                    <a href="ad-hotel.html"><i class="fas fa-tachometer-alt"></i> لوحة التحكم</a>
+                </div>
+                <div class="menu-item">
+                    <a href="hotel_booking.html"><i class="fas fa-calendar-alt"></i> الحجوزات</a>
+                </div>
+                <div class="menu-item">
+                    <a href="rooms.html"><i class="fas fa-bed"></i> الغرف</a>
+                </div>
+                <div class="menu-item">
+                    <a href="customers.html"><i class="fas fa-users"></i> العملاء</a>
+                </div>
+                <div class="menu-item">
+                    <a href="hotel_ser.html" class="active"><i class="fas fa-concierge-bell"></i> الخدمات</a>
+                </div>
+                <div class="menu-item">
+                    <a href="reports.html"><i class="fas fa-chart-line"></i> التقارير</a>
+                </div>
+                <div class="menu-item">
+                    <a href="hotel-settings.html"><i class="fas fa-cog"></i> الإعدادات</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <h1 class="section-title"><i class="fas fa-concierge-bell"></i> إدارة الخدمات</h1>
+            
+            <div class="service-filter">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="service-name">اسم الخدمة</label>
+                        <input type="text" id="service-name" class="filter-control" placeholder="ابحث باسم الخدمة">
+                    </div>
+                    <div class="filter-group">
+                        <label for="service-category">تصنيف الخدمة</label>
+                        <select id="service-category" class="filter-control">
+                            <option value="">جميع التصنيفات</option>
+                            <option value="restaurant">مطعم</option>
+                            <option value="spa">سبا وعناية</option>
+                            <option value="transport">مواصلات</option>
+                            <option value="activity">أنشطة ترفيهية</option>
+                            <option value="business">خدمات أعمال</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="service-status">حالة الخدمة</label>
+                        <select id="service-status" class="filter-control">
+                            <option value="">جميع الحالات</option>
+                            <option value="available">متاحة</option>
+                            <option value="unavailable">غير متاحة</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="service-price">نطاق السعر</label>
+                        <select id="service-price" class="filter-control">
+                            <option value="">جميع الأسعار</option>
+                            <option value="0-50">حتى $50</option>
+                            <option value="50-100">$50 - $100</option>
+                            <option value="100-200">$100 - $200</option>
+                            <option value="200+">أكثر من $200</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="service-location">الموقع</label>
+                        <select id="service-location" class="filter-control">
+                            <option value="">جميع المواقع</option>
+                            <option value="lobby">اللوبي</option>
+                            <option value="pool">حوض السباحة</option>
+                            <option value="restaurant">المطعم</option>
+                            <option value="spa">السبا</option>
+                            <option value="room">في الغرفة</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="service-provider">مقدم الخدمة</label>
+                        <select id="service-provider" class="filter-control">
+                            <option value="">جميع المقدمين</option>
+                            <option value="hotel">الفندق</option>
+                            <option value="partner">شريك خارجي</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="filter-actions">
+                    <button class="btn btn-primary">بحث</button>
+                    <button class="btn">إعادة تعيين</button>
+                </div>
+            </div>
+            
+            <div class="table-header">
+                <h2 class="table-title">قائمة الخدمات</h2>
+                <div class="table-actions">
+                    <button class="btn btn-primary" id="toggle-view"><i class="fas fa-th"></i> تبديل العرض</button>
+                    <button class="btn btn-success" id="add-service"><i class="fas fa-plus"></i> إضافة خدمة</button>
+                    <button class="btn btn-warning"><i class="fas fa-file-excel"></i> تصدير</button>
+                </div>
+            </div>
+            
+            <!-- عرض البطاقات -->
+            <div class="services-grid" id="cards-view">
+                <div class="service-card">
+                    <img src="/PHOTO&VID/room_ser.jpg" alt="خدمة المطعم" class="service-image">
+                    <div class="service-content">
+                        <h3 class="service-title">خدمة الغرف الفاخرة</h3>
+                        <div class="service-price">$50 <span>لكل وجبة</span></div>
+                        <p class="service-description">استمتع بوجبات فاخرة من أشهر الطهاة تقدم مباشرة إلى غرفتك في أي وقت تريده.</p>
+                        <div class="service-meta">
+                            <span class="service-category">مطعم</span>
+                            <span class="service-availability available">متاحة</span>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn btn-primary btn-small"><i class="fas fa-eye"></i></button>
+                            <button class="btn btn-success btn-small"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-danger btn-small"><i class="fas fa-trash"></i></button>
+                            <button class="btn btn-info btn-small"><i class="fas fa-calendar-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="/PHOTO&VID/spa.jpg" alt="خدمة السبا" class="service-image">
+                    <div class="service-content">
+                        <h3 class="service-title">حزمة السبا الكاملة</h3>
+                        <div class="service-price">$120 <span>للشخص</span></div>
+                        <p class="service-description">جلسة سبا متكاملة تشمل مساج، علاج بالعطور، وحمام بخار لمدة 3 ساعات.</p>
+                        <div class="service-meta">
+                            <span class="service-category">سبا وعناية</span>
+                            <span class="service-availability available">متاحة</span>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn btn-primary btn-small"><i class="fas fa-eye"></i></button>
+                            <button class="btn btn-success btn-small"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-danger btn-small"><i class="fas fa-trash"></i></button>
+                            <button class="btn btn-info btn-small"><i class="fas fa-calendar-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="/PHOTO&VID/limozin.jpg" alt="خدمة المواصلات" class="service-image">
+                    <div class="service-content">
+                        <h3 class="service-title">سيارة ليموزين</h3>
+                        <div class="service-price">$80 <span>للساعة</span></div>
+                        <p class="service-description">خدمة نقل فاخرة بسيارة ليموزين مع سائق خاص لرحلاتك داخل المدينة.</p>
+                        <div class="service-meta">
+                            <span class="service-category">مواصلات</span>
+                            <span class="service-availability unavailable">غير متاحة</span>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn btn-primary btn-small"><i class="fas fa-eye"></i></button>
+                            <button class="btn btn-success btn-small"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-danger btn-small"><i class="fas fa-trash"></i></button>
+                            <button class="btn btn-info btn-small"><i class="fas fa-calendar-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- عرض الجدول (مخفي افتراضياً) -->
+            <div class="services-table" id="table-view" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>الصورة</th>
+                            <th>اسم الخدمة</th>
+                            <th>التصنيف</th>
+                            <th>السعر</th>
+                            <th>الموقع</th>
+                            <th>الحالة</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><img src="/PHOTO&VID/room_ser.jpg" alt="خدمة المطعم" class="table-image"></td>
+                            <td>خدمة الغرف الفاخرة</td>
+                            <td>مطعم</td>
+                            <td>$50</td>
+                            <td>في الغرفة</td>
+                            <td><span class="available">متاحة</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-small"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-success btn-small"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger btn-small"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><img src="/PHOTO&VID/spa.jpg" alt="خدمة السبا" class="table-image"></td>
+                            <td>حزمة السبا الكاملة</td>
+                            <td>سبا وعناية</td>
+                            <td>$120</td>
+                            <td>السبا</td>
+                            <td><span class="available">متاحة</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-small"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-success btn-small"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger btn-small"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><img src="/PHOTO&VID/limozin.jpg" alt="خدمة المواصلات" class="table-image"></td>
+                            <td>سيارة ليموزين</td>
+                            <td>مواصلات</td>
+                            <td>$80</td>
+                            <td>اللوبي</td>
+                            <td><span class="unavailable">غير متاحة</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-small"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-success btn-small"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger btn-small"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- نموذج إضافة خدمة (مخفي افتراضياً) -->
+            <div class="service-form-container" id="service-form" style="display: none;">
+                <h2 class="section-title"><i class="fas fa-plus-circle"></i> إضافة خدمة جديدة</h2>
+                
+                <form id="add-service-form">
+                    <div class="image-upload">
+                        <img src="assets/images/default-service.jpg" alt="صورة الخدمة" class="image-preview" id="service-image-preview">
+                        <button type="button" class="btn btn-primary btn-small"><i class="fas fa-camera"></i> تغيير الصورة</button>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="service-name">اسم الخدمة</label>
+                            <input type="text" id="service-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service-category">تصنيف الخدمة</label>
+                            <select id="service-category" class="form-control" required>
+                                <option value="restaurant">مطعم</option>
+                                <option value="spa">سبا وعناية</option>
+                                <option value="transport">مواصلات</option>
+                                <option value="activity">أنشطة ترفيهية</option>
+                                <option value="business">خدمات أعمال</option>
+                                <option value="other">أخرى</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="service-price">السعر</label>
+                            <input type="number" id="service-price" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service-duration">المدة (دقائق)</label>
+                            <input type="number" id="service-duration" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="service-location">الموقع</label>
+                            <select id="service-location" class="form-control" required>
+                                <option value="lobby">اللوبي</option>
+                                <option value="pool">حوض السباحة</option>
+                                <option value="restaurant">المطعم</option>
+                                <option value="spa">السبا</option>
+                                <option value="room">في الغرفة</option>
+                                <option value="other">موقع آخر</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="service-provider">مقدم الخدمة</label>
+                            <select id="service-provider" class="form-control" required>
+                                <option value="hotel">الفندق</option>
+                                <option value="partner">شريك خارجي</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="service-status">حالة الخدمة</label>
+                            <select id="service-status" class="form-control" required>
+                                <option value="available">متاحة</option>
+                                <option value="unavailable">غير متاحة</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="service-capacity">السعة (أشخاص)</label>
+                            <input type="number" id="service-capacity" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service-description">وصف الخدمة</label>
+                        <textarea id="service-description" class="form-control" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service-notes">ملاحظات إضافية</label>
+                        <textarea id="service-notes" class="form-control" rows="2"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-danger" id="cancel-service-form">إلغاء</button>
+                        <button type="submit" class="btn btn-primary">حفظ الخدمة</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2023 Phoenix للسياحة والسفر. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userMenu = document.querySelector('.user-menu');
+            const dropdown = document.querySelector('.dropdown-content');
+            
+            userMenu.addEventListener('click', function() {
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!userMenu.contains(e.target)) {
+                    dropdown.style.display = 'none';
+                }
+            });
+
+            const toggleViewBtn = document.getElementById('toggle-view');
+            const cardsView = document.getElementById('cards-view');
+            const tableView = document.getElementById('table-view');
+            
+            toggleViewBtn.addEventListener('click', function() {
+                if (cardsView.style.display === 'none') {
+                    cardsView.style.display = 'grid';
+                    tableView.style.display = 'none';
+                    toggleViewBtn.innerHTML = '<i class="fas fa-th"></i> تبديل العرض';
+                } else {
+                    cardsView.style.display = 'none';
+                    tableView.style.display = 'block';
+                    toggleViewBtn.innerHTML = '<i class="fas fa-list"></i> تبديل العرض';
+                }
+            });
+
+            // إظهار/إخفاء نموذج إضافة خدمة
+            const addServiceBtn = document.getElementById('add-service');
+            const serviceForm = document.getElementById('service-form');
+            const cancelFormBtn = document.getElementById('cancel-service-form');
+            
+            addServiceBtn.addEventListener('click', function() {
+                serviceForm.style.display = 'block';
+                cardsView.style.display = 'none';
+                tableView.style.display = 'none';
+                window.scrollTo(0, document.body.scrollHeight);
+            });
+            
+            cancelFormBtn.addEventListener('click', function() {
+                serviceForm.style.display = 'none';
+                cardsView.style.display = 'grid';
+            });
+
+  
+        });
+    </script>
+</body>
+</html>

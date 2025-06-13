@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حجوزاتي - سفاري</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style/my-booking.css">
+</head>
+<body>    <header class="main-header">
+    <div class="container">
+        <div class="logo">
+            <img src="/PHOTO&VID/logo.png" alt="شعار Phoenix">
+            <span>Phoenix</span>
+        </div>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#" class="active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="destinations1.html"><i class="fas fa-map-marked-alt"></i> وجهات السفر</a></li>
+                <li><a href="hotels.html"><i class="fas fa-hotel"></i> الفنادق</a></li>
+                <li><a href="services.html"><i class="fas fa-concierge-bell"></i> خدمات إضافية</a></li>
+            </ul>
+        </nav>
+        
+        <div class="user-menu">
+            <div class="user-avatar">
+                <img src="/PHOTO&VID/" alt="صورة المستخدم">
+            </div>
+            <div class="user-dropdown">
+                <div class="user-info">
+                    <span class="user-name">مرحباً، أحمد</span>
+                    <span class="user-role">عضو مميز</span>
+                </div>
+                <div class="dropdown-content">
+                    <a href="user.html"><i class="fas fa-user"></i> الملف الشخصي</a>
+                    <a href="my-booking.html"><i class="fas fa-calendar-alt"></i> حجوزاتي</a>
+                    <a href="index.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+    <!-- محتوى صفحة الحجوزات -->
+    <main class="bookings-section">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    حجوزاتي
+                </h1>
+                
+                <div class="search-box">
+                    <input type="text" placeholder="ابحث في الحجوزات..." id="search-input">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            
+            <!-- فلاتر الحجوزات -->
+            <div class="filter-tabs">
+                <div class="filter-tab active" data-filter="all">الكل</div>
+                <div class="filter-tab" data-filter="pending">قيد الانتظار</div>
+                <div class="filter-tab" data-filter="confirmed">مؤكدة</div>
+                <div class="filter-tab" data-filter="cancelled">ملغاة</div>
+                <div class="filter-tab" data-filter="completed">منتهية</div>
+            </div>
+            
+            <!-- قائمة الحجوزات -->
+            <div class="bookings-list" id="bookings-list">
+                <!-- سيتم ملؤها بواسطة JavaScript -->
+            </div>
+            
+            <!-- حالة عدم وجود حجوزات -->
+            <div class="empty-state" id="empty-state" style="display: none;">
+                <i class="fas fa-calendar-times"></i>
+                <h3>لا توجد حجوزات</h3>
+                <p>ليس لديك أي حجوزات حالية. يمكنك استكشاف عروضنا الخاصة وحجز رحلتك القادمة!</p>
+                <a href="hotels.html" class="explore-btn">استكشاف العروض</a>
+            </div>
+            
+            <!-- ترقيم الصفحات -->
+            <div class="pagination">
+                <button id="prev-page" disabled><i class="fas fa-chevron-right"></i></button>
+                <span id="page-info">الصفحة 1 من 5</span>
+                <button id="next-page"><i class="fas fa-chevron-left"></i></button>
+            </div>
+        </div>
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>عن Phoenix</h3>
+                    <p>نقدم أفضل خدمات السفر والسياحة لعملائنا الكرام بأفضل الأسعار وجودة الخدمة.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+
+          >
+                
+        
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; <span id="current-year"></span> Phoenix</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/JS/my-booking.js"></script>
+</body>
+</html>

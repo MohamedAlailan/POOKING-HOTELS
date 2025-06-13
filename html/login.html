@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - Phoenix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style/login.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <img src="/PHOTO&VID/logo.png" alt="شعار رحلات" class="logo">
+            <h2>تسجيل الدخول</h2>
+            
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> كلمة المرور</label>
+                    <input type="password" id="password" required>
+                </div>
+                
+                <div class="form-options">
+                    <label>
+                        <input type="checkbox"> تذكرني
+                    </label>
+                    <a href="password.html">نسيت كلمة المرور؟</a>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+                </button>
+                
+                <div class="auth-footer">
+                    <p>ليس لديك حساب؟</p>
+                    <div class="register-options">
+                        <a href="register-user.html" class="btn btn-outline">
+                            <i class="fas fa-user-plus"></i> إنشاء حساب سائح
+                        </a>
+                        <a href="register-hotel.html" class="btn btn-outline">
+                            <i class="fas fa-hotel"></i> إنشاء حساب فندق
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/JS/login.js"></script>
+</body>
+</html>

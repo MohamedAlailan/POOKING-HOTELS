@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الخدمات الإضافية - Phoenix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style/services.css">
+</head>
+<body>  <header class="main-header">
+    <div class="container">
+        <div class="logo">
+            <img src="/PHOTO&VID/logo.png" alt="شعار Phoenix">
+            <span>Phoenix</span>
+        </div>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#" class="active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="destinations1.html"><i class="fas fa-map-marked-alt"></i> وجهات السفر</a></li>
+                <li><a href="hotels.html"><i class="fas fa-hotel"></i> الفنادق</a></li>
+                <li><a href="services.html"><i class="fas fa-concierge-bell"></i> خدمات إضافية</a></li>
+            </ul>
+        </nav>
+        
+        <div class="user-menu">
+            <div class="user-avatar">
+                <img src="/PHOTO&VID/" alt="صورة المستخدم">
+            </div>
+            <div class="user-dropdown">
+                <div class="user-info">
+                    <span class="user-name">مرحباً، أحمد</span>
+                    <span class="user-role">عضو مميز</span>
+                </div>
+                <div class="dropdown-content">
+                    <a href="user.html"><i class="fas fa-user"></i> الملف الشخصي</a>
+                    <a href="my-booking.html"><i class="fas fa-calendar-alt"></i> حجوزاتي</a>
+                    <a href="index.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+    <main class="services-main">
+        <section class="services-hero">
+            <div class="container">
+                <h1>خدماتنا الإضافية</h1>
+                <p>اجعل رحلتك أكثر راحة واستمتاعاً مع خدماتنا المميزة</p>
+            </div>
+        </section>
+        
+        <section class="services-categories">
+            <div class="container">
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="all">الكل</button>
+                    <button class="tab-btn" data-category="transportation">المواصلات</button>
+                    <button class="tab-btn" data-category="tours">الجولات السياحية</button>
+                    <button class="tab-btn" data-category="activities">الأنشطة</button>
+                    <button class="tab-btn" data-category="other">خدمات أخرى</button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="services-grid-section">
+            <div class="container">
+                <div class="services-grid">
+                    <!-- خدمة 1 -->
+                    <div class="service-card" data-category="transportation">
+                        <div class="service-image">
+                            <img src="/PHOTO&VID/taxi.jpg" alt="خدمة النقل من المطار">
+                            <div class="service-badge">الأكثر طلباً</div>
+                        </div>
+                        <div class="service-info">
+                            <h3>النقل من المطار</h3>
+                            <p class="service-description">
+                                خدمة نقل فاخرة من المطار إلى الفندق وبالعكس مع سائق محترف يتحدث العربية
+                            </p>
+                            <div class="service-features">
+                                <span><i class="fas fa-car"></i> سيارة فاخرة</span>
+                                <span><i class="fas fa-user-tie"></i> سائق خاص</span>
+                                <span><i class="fas fa-bolt"></i> حجز فوري</span>
+                            </div>
+                            <div class="service-footer">
+                                <div class="price">
+                                    <span class="current-price">$50</span>
+                                    <span class="per-service">/ للرحلة</span>
+                                </div>
+                                <button class="btn btn-small add-to-cart" data-service="1">
+                                    <i class="fas fa-plus"></i> إضافة للسلة
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- خدمة 2 -->
+                    <div class="service-card" data-category="tours">
+                        <div class="service-image">
+                            <img src="/PHOTO&VID/limozin.jpg" alt="جولة المدينة">
+                        </div>
+                        <div class="service-info">
+                            <h3>جولة المدينة الكاملة</h3>
+                            <p class="service-description">
+                                جولة شاملة لأهم معالم المدينة مع مرشد سياحي متخصص
+                            </p>
+                            <div class="service-features">
+                                <span><i class="fas fa-map-marked-alt"></i> 8 ساعات</span>
+                                <span><i class="fas fa-utensils"></i> وجبة غداء</span>
+                                <span><i class="fas fa-comments"></i> مرشد عربي</span>
+                            </div>
+                            <div class="service-footer">
+                                <div class="price">
+                                    <span class="current-price">$75</span>
+                                    <span class="per-service">/ للشخص</span>
+                                </div>
+                                <button class="btn btn-small add-to-cart" data-service="2">
+                                    <i class="fas fa-plus"></i> إضافة للسلة
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- خدمة 3 -->
+                    <div class="service-card" data-category="activities">
+                        <div class="service-image">
+                            <img src="/PHOTO&VID/غوص.jpg" alt="غوص">
+                            <div class="service-badge">جديد</div>
+                        </div>
+                        <div class="service-info">
+                            <h3>تجربة الغوص</h3>
+                            <p class="service-description">
+                                رحلة غوص لمشاهدة الشعاب المرجانية مع مدرب محترف
+                            </p>
+                            <div class="service-features">
+                                <span><i class="fas fa-clock"></i> 4 ساعات</span>
+                                <span><i class="fas fa-swimmer"></i> معدات متكاملة</span>
+                                <span><i class="fas fa-camera"></i> صور تحت الماء</span>
+                            </div>
+                            <div class="service-footer">
+                                <div class="price">
+                                    <span class="old-price">$120</span>
+                                    <span class="current-price">$95</span>
+                                    <span class="per-service">/ للشخص</span>
+                                </div>
+                                <button class="btn btn-small add-to-cart" data-service="3">
+                                    <i class="fas fa-plus"></i> إضافة للسلة
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- خدمة 4 -->
+                    <div class="service-card" data-category="other">
+                        <div class="service-image">
+                            <img src="/PHOTO&VID/doctor.jpg" alt="تأمين طبي">
+                        </div>
+                        <div class="service-info">
+                            <h3>تأمين طبي للسفر</h3>
+                            <p class="service-description">
+                                تغطية تأمينية طبية كاملة طوال مدة رحلتك
+                            </p>
+                            <div class="service-features">
+                                <span><i class="fas fa-shield-alt"></i> تغطية شاملة</span>
+                                <span><i class="fas fa-ambulance"></i> طوارئ 24/7</span>
+                                <span><i class="fas fa-globe"></i> حول العالم</span>
+                            </div>
+                            <div class="service-footer">
+                                <div class="price">
+                                    <span class="current-price">$30</span>
+                                    <span class="per-service">/ للشخص</span>
+                                </div>
+                                <button class="btn btn-small add-to-cart" data-service="4">
+                                    <i class="fas fa-plus"></i> إضافة للسلة
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- خدمة 5 -->
+                    <div class="service-card" data-category="transportation">
+                        <div class="service-image">
+                            <img src="/PHOTO&VID/car.jpg" alt="تأجير سيارات">
+                        </div>
+                        <div class="service-info">
+                            <h3>تأجير سيارة</h3>
+                            <p class="service-description">
+                                خدمة تأجير سيارات بمواصفات مختلفة مع تأمين كامل
+                            </p>
+                            <div class="service-features">
+                                <span><i class="fas fa-car-side"></i> عدة موديلات</span>
+                                <span><i class="fas fa-gas-pump"></i> وقود مجاني</span>
+                                <span><i class="fas fa-map"></i> GPS مجاني</span>
+                            </div>
+                            <div class="service-footer">
+                                <div class="price">
+                                    <span class="current-price">$65</span>
+                                    <span class="per-service">/ اليوم</span>
+                                </div>
+                                <button class="btn btn-small add-to-cart" data-service="5">
+                                    <i class="fas fa-plus"></i> إضافة للسلة
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- خدمة 6 -->
+                    <div class="service-card" data-category="tours">
+                        <div class="service-image">
+                            <img src="/PHOTO&VID/سفاري.jpg" alt="سفاري الصحراء">
+                        </div>
+                        <div class="service-info">
+                            <h3>سفاري الصحراء</h3>
+                            <p class="service-description">
+                                مغامرة سفاري صحراوية تشمل ركوب الجمال والعشاء البدوي
+                            </p>
+                            <div class="service-features">
+                                <span><i class="fas fa-sun"></i> 6 ساعات</span>
+                                <span><i class="fas fa-utensils"></i> عشاء بدوي</span>
+                                <span><i class="fas fa-camera"></i> صور تذكارية</span>
+                            </div>
+                            <div class="service-footer">
+                                <div class="price">
+                                    <span class="current-price">$90</span>
+                                    <span class="per-service">/ للشخص</span>
+                                </div>
+                                <button class="btn btn-small add-to-cart" data-service="6">
+                                    <i class="fas fa-plus"></i> إضافة للسلة
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cart-summary">
+                    <h3><i class="fas fa-shopping-cart"></i> سلة الخدمات</h3>
+                    <div class="cart-items" id="cart-items">
+                        <!-- العناصر ستضاف هنا عبر JavaScript -->
+                        <p class="empty-cart">سلة الخدمات فارغة</p>
+                    </div>
+                    <div class="cart-total">
+                        <span>المجموع:</span>
+                        <span id="cart-total-price">$0</span>
+                    </div>
+                    <button class="btn btn-primary" id="checkout-btn">إتمام الحجز</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Phoenix</h3>
+                    <p>نقدم أفضل خدمات السفر والفنادق حول العالم لعملائنا الكرام.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="home.html">الرئيسية</a></li>
+                        <li><a href="destinations1.html">وجهات السفر</a></li>
+                        <li><a href="hotels.html">الفنادق</a></li>
+                        <li><a href="services.html">الخدمات الإضافية</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>خدمة العملاء</h3>
+                    <ul>
+                        <li><a href="#">Phoenix@gmail.com</a></li>
+
+                </div>
+                
+                <div class="footer-col">
+                    <h3>النشرة البريدية</h3>
+                    <p>اشترك لتصلك آخر العروض والتخفيضات</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="بريدك الإلكتروني" required>
+                        <button type="submit" class="btn">اشترك</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Phoenix للسياحة والسفر. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="/JS/services.js "></script>
+</body>
+</html>

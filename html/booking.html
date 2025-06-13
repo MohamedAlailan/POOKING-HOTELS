@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حجز فندقي دولي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --primary-hover: #2980b9;
+            --secondary-color: #e67e22;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --white: #ffffff;
+            --gray: #95a5a6;
+            --light-gray: #f5f5f5;
+            --border-radius: 8px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: var(--border-radius);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .price-tag {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-right: 5px;
+        }
+
+        /* تصميم الصفحة */
+        .booking-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 50px 0;
+        }
+
+        .booking-container {
+            display: flex;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+
+        .hotel-info {
+            flex: 1;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                      url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            padding: 40px;
+            color: white;
+            position: relative;
+        }
+
+        .hotel-name-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+
+        .hotel-name-container input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.2rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .hotel-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin: 10px 0;
+        }
+
+        .star {
+            color: #f1c40f;
+        }
+
+        .hotel-features {
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* نموذج الحجز */
+        .booking-form-container {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-header h1 {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .booking-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .booking-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .booking-form input,
+        .booking-form select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+        }
+
+        .booking-form input:focus,
+        .booking-form select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .services-list {
+            margin: 20px 0;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+        }
+
+        .payment-methods {
+            margin: 25px 0;
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            
+        }
+
+        .payment-method i {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .summary {
+            background-color: var(--light-gray);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .total {
+            font-weight: bold;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        /* التصميم المتجاوب */
+        @media (max-width: 992px) {
+            .booking-container {
+                flex-direction: column;
+            }
+            
+            .hotel-info {
+                padding: 30px;
+            }
+            
+            .booking-form-container {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .form-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .form-header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="booking-section">
+        <div class="container">
+            <div class="booking-container">
+                <!-- معلومات الفندق -->
+                <div class="hotel-info">
+                    <div class="hotel-name-container">
+                        <input type="text" id="customHotelName" placeholder="أدخل اسم الفندق" required>
+                    </div>
+                    
+                    <h2 id="displayHotelName">فندق دولي</h2>
+                    <div class="hotel-rating">
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                    </div>
+                    <p id="hotelDescription">اختر فندقك المفضل واستمتع بإقامة فاخرة</p>
+                    
+                    <div class="hotel-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div>
+                                <h4>مواقع عالمية</h4>
+                                <p>فنادق في أفضل الوجهات السياحية حول العالم</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-concierge-bell"></i>
+                            </div>
+                            <div>
+                                <h4>خدمات فاخرة</h4>
+                                <p>أعلى معايير الخدمة والرفاهية</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div>
+                                <h4>حجز آمن</h4>
+                                <p>نظام دفع إلكتروني آمن ومحمي</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- نموذج الحجز -->
+                <div class="booking-form-container">
+                    <div class="form-header">
+                        <h1><i class="fas fa-hotel"></i> حجز فندقي دولي</h1>
+                        <p>احجز غرفتك بسهولة وأمان</p>
+                    </div>
+                    
+                    <form class="booking-form" id="bookingForm">
+                        <div class="form-group">
+                            <label for="hotelName">اسم الفندق</label>
+                            <input type="text" id="hotelName" name="hotelName" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="checkIn">تاريخ الوصول</label>
+                                <input type="date" id="checkIn" name="checkIn" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkOut">تاريخ المغادرة</label>
+                                <input type="date" id="checkOut" name="checkOut" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="roomType">نوع الغرفة</label>
+                            <select id="roomType" name="roomType" required>
+                                <option value="" disabled selected>اختر نوع الغرفة</option>
+                                <option value="standard">غرفة قياسية - $120/ليلة</option>
+                                <option value="deluxe">غرفة ديلوكس - $180/ليلة</option>
+                                <option value="suite">جناح فاخر - $300/ليلة</option>
+                                <option value="presidential">جناح رئاسي - $500/ليلة</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="adults">البالغون</label>
+                                <select id="adults" name="adults" required>
+                                    <option value="1">1 بالغ</option>
+                                    <option value="2">2 بالغين</option>
+                                    <option value="3">3 بالغين</option>
+                                    <option value="4">4 بالغين</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="children">الأطفال</label>
+                                <select id="children" name="children">
+                                    <option value="0">لا يوجد أطفال</option>
+                                    <option value="1">1 طفل</option>
+                                    <option value="2">2 أطفال</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>الخدمات الإضافية</label>
+                            <div class="services-list">
+                                <div class="service-item">
+                                    <div>
+                                        <input type="checkbox" id="breakfast" name="services" value="breakfast">
+                                        <label for="breakfast">إفطار بوفيه</label>
+                                    </div>
+                                    <span class="price-tag">$25/شخص</span>
+                                </div>
+                                <div class="service-item">
+                                    <div>
+                                        <input type="checkbox" id="airport" name="services" value="airport">
+                                        <label for="airport">نقل من/إلى المطار</label>
+                                    </div>
+                                    <span class="price-tag">$50</span>
+                                </div>
+                                <div class="service-item">
+                                    <div>
+                                        <input type="checkbox" id="spa" name="services" value="spa">
+                                        <label for="spa">حزمة سبا</label>
+                                    </div>
+                                    <span class="price-tag">$80</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>طريقة الدفع</label>
+                            <div class="payment-methods">
+                                <div class="payment-method">
+                                    <input type="radio" id="visa" name="payment" value="visa" required checked>
+                                    <i class="fab fa-cc-visa"></i>
+                                    <label for="visa">بطاقة فيزا/ماستركارد</label>
+                                </div>
+                                <div class="payment-method">
+                                    <input type="radio" id="paypal" name="payment" value="paypal">
+                                    <i class="fab fa-cc-paypal"></i>
+                                    <label for="paypal">باي بال</label>
+                                </div>
+                                <div class="payment-method">
+                                    <input type="radio" id="applepay" name="payment" value="applepay">
+                                    <i class="fab fa-cc-apple-pay"></i>
+                                    <label for="applepay">آبل باي</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="summary">
+                            <div class="summary-item">
+                                <span>مدة الإقامة:</span>
+                                <span id="nightsCount">0 ليالي</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>سعر الغرفة:</span>
+                                <span id="roomPrice">$0</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>الخدمات الإضافية:</span>
+                                <span id="servicesPrice">$0</span>
+                            </div>
+                            <div class="summary-item total">
+                                <span>المجموع:</span>
+                                <span id="totalPrice">$0</span>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                             <i class="fas fa-check-circle"></i> تأكيد الحجز
+                            
+                                </button>
+        
+                            </form>
+                            <a href="home.html" style="text-decoration: none; color:#e67e22;">انتقل إلى الصفحة الرئيسية</a>
+                        </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookingForm = document.getElementById('bookingForm');
+            const customHotelName = document.getElementById('customHotelName');
+            const hotelNameField = document.getElementById('hotelName');
+            const displayHotelName = document.getElementById('displayHotelName');
+            const hotelDescription = document.getElementById('hotelDescription');
+            const checkIn = document.getElementById('checkIn');
+            const checkOut = document.getElementById('checkOut');
+            const roomType = document.getElementById('roomType');
+            const servicesCheckboxes = document.querySelectorAll('input[name="services"]');
+            
+            // عناصر الملخص
+            const nightsCount = document.getElementById('nightsCount');
+            const roomPrice = document.getElementById('roomPrice');
+            const servicesPrice = document.getElementById('servicesPrice');
+            const totalPrice = document.getElementById('totalPrice');
+            
+            // أسعار الغرف
+            const roomPrices = {
+                'standard': 120,
+                'deluxe': 180,
+                'suite': 300,
+                'presidential': 500
+            };
+            
+            // أسعار الخدمات
+            const servicePrices = {
+                'breakfast': 25,
+                'airport': 50,
+                'spa': 80
+            };
+            
+            // تعيين التاريخ الأدنى (اليوم)
+            const today = new Date().toISOString().split('T')[0];
+            checkIn.min = today;
+            
+            // تحديث اسم الفندق والوصف
+            customHotelName.addEventListener('input', function() {
+                const name = this.value.trim() || "فندق دولي";
+                displayHotelName.textContent = name;
+                hotelNameField.value = name;
+                hotelDescription.textContent = this.value.trim() ? 
+                    `استمتع بإقامة فاخرة في ${name}` : 
+                    "اختر فندقك المفضل واستمتع بإقامة فاخرة";
+            });
+            
+            // تحديث الملخص عند تغيير التواريخ
+            function updateDates() {
+                if (checkIn.value && checkOut.value) {
+                    const start = new Date(checkIn.value);
+                    const end = new Date(checkOut.value);
+                    const nights = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+                    
+                    if (nights > 0) {
+                        nightsCount.textContent = `${nights} ليالي`;
+                        calculateTotal();
+                    } else {
+                        nightsCount.textContent = "0 ليالي";
+                    }
+                }
+            }
+            
+            // تحديث الملخص عند تغيير نوع الغرفة
+            function updateRoomPrice() {
+                const price = roomPrices[roomType.value] || 0;
+                roomPrice.textContent = `$${price * getNights()}`;
+                calculateTotal();
+            }
+            
+            // تحديث الملخص عند تغيير الخدمات
+            function updateServices() {
+                let total = 0;
+                servicesCheckboxes.forEach(service => {
+                    if (service.checked) {
+                        total += servicePrices[service.value] * 
+                                (service.value === 'breakfast' ? 
+                                 parseInt(document.getElementById('adults').value) + 
+                                 parseInt(document.getElementById('children').value) : 1);
+                    }
+                });
+                servicesPrice.textContent = `$${total}`;
+                calculateTotal();
+            }
+            
+            // حساب عدد الليالي
+            function getNights() {
+                if (checkIn.value && checkOut.value) {
+                    const start = new Date(checkIn.value);
+                    const end = new Date(checkOut.value);
+                    return Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+                }
+                return 0;
+            }
+            
+            // حساب المجموع الكلي
+            function calculateTotal() {
+                const nights = getNights();
+                const room = roomPrices[roomType.value] || 0;
+                
+                let services = 0;
+                servicesCheckboxes.forEach(s => {
+                    if (s.checked) {
+                        services += servicePrices[s.value] * 
+                                  (s.value === 'breakfast' ? 
+                                   parseInt(document.getElementById('adults').value) + 
+                                   parseInt(document.getElementById('children').value) : 1);
+                    }
+                });
+                
+                const total = (room * nights) + services;
+                totalPrice.textContent = `$${total}`;
+            }
+            
+            // إضافة مستمعي الأحداث
+            checkIn.addEventListener('change', function() {
+                checkOut.min = this.value;
+                updateDates();
+            });
+            
+            checkOut.addEventListener('change', updateDates);
+            roomType.addEventListener('change', updateRoomPrice);
+            servicesCheckboxes.forEach(s => s.addEventListener('change', updateServices));
+            document.getElementById('adults').addEventListener('change', updateServices);
+            document.getElementById('children').addEventListener('change', updateServices);
+            
+            // إرسال النموذج
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // التحقق من البيانات
+                if (!customHotelName.value.trim()) {
+                    alert('الرجاء إدخال اسم الفندق');
+                    return;
+                }
+                
+                if (new Date(checkOut.value) <= new Date(checkIn.value)) {
+                    alert('تاريخ المغادرة يجب أن يكون بعد تاريخ الوصول');
+                    return;
+                }
+                
+                // جمع بيانات الحجز
+                const bookingData = {
+                    hotel: hotelNameField.value,
+                    checkIn: checkIn.value,
+                    checkOut: checkOut.value,
+                    roomType: roomType.options[roomType.selectedIndex].text,
+                    adults: document.getElementById('adults').value,
+                    children: document.getElementById('children').value,
+                    services: [],
+                    payment: document.querySelector('input[name="payment"]:checked').value,
+                    total: totalPrice.textContent
+                };
+                
+                document.querySelectorAll('input[name="services"]:checked').forEach(s => {
+                    bookingData.services.push({
+                        name: s.nextElementSibling.textContent,
+                        price: `$${servicePrices[s.value] * (s.value === 'breakfast' ? 
+                              (parseInt(bookingData.adults) + parseInt(bookingData.children)) : 1)}`
+                    });
+                });
+                
+                // عرض تأكيد الحجز
+                const confirmationMessage = `
+                    تم تأكيد حجزك بنجاح!
+                    ======================
+                    الفندق: ${bookingData.hotel}
+                    نوع الغرفة: ${bookingData.roomType}
+                    من: ${bookingData.checkIn} إلى ${bookingData.checkIn}
+                    الضيوف: ${bookingData.adults} بالغين، ${bookingData.children} أطفال
+                    ${bookingData.services.length ? 'الخدمات:' : ''}
+                    ${bookingData.services.map(s => `- ${s.name}: ${s.price}`).join('\n')}
+                    
+                    المجموع: ${bookingData.total}
+                    
+                    شكراً لاختيارك خدماتنا!
+                `;
+                
+                alert(confirmationMessage);
+                
+                // هنا يمكنك إضافة كود إرسال البيانات إلى الخادم
+                // console.log(bookingData);
+                
+                // إعادة تعبئة النموذج
+                bookingForm.reset();
+                customHotelName.value = '';
+                displayHotelName.textContent = 'فندق دولي';
+                hotelDescription.textContent = 'اختر فندقك المفضل واستمتع بإقامة فاخرة';
+                
+                // إعادة تعيين الملخص
+                nightsCount.textContent = '0 ليالي';
+                roomPrice.textContent = '$0';
+                servicesPrice.textContent = '$0';
+                totalPrice.textContent = '$0';
+            });
+        });
+    </script>
+</body>
+</html>
